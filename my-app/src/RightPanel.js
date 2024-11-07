@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RightPanel.css';
 
 const RightPanel = () => {
   const notes = [
 
     {
-        question: "Are reviews by Cochrane a reliable source of health care data?",
+        questionNumber: "1.",
+        questionText:"Are reviews by Cochrane a reliable source of health care data?",
         content: `
           <strong>1. Are reviews by Cochrane a reliable source of health care data?</strong>
           <p>Cochrane’s systematic reviews are highly valued because they are based on high-quality studies and are regularly updated to incorporate new research findings. This ensures that the evidence remains current and reliable 
@@ -15,7 +16,8 @@ const RightPanel = () => {
         `
       },
       {
-        question: "Could Tom Jefferson be considered an expert on mask mandates and the spread of respiratory illnesses?",
+        questionNumber: "2.",
+        questionText: "Could Tom Jefferson be considered an expert on mask mandates and the spread of respiratory illnesses?",
         content: `
           <strong>2. Could Tom Jefferson be considered an expert on mask mandates and the spread of respiratory illnesses?</strong>
           <p>Tom Jefferson is a British epidemiologist and a senior associate tutor at the University of Oxford 
@@ -28,7 +30,8 @@ const RightPanel = () => {
         `
     },
     {
-        question: "What are the political leanings of Bret Stephens?",
+        questionNumber: "3.",
+        questionText: "What are the political leanings of Bret Stephens?",
         content: `
           <strong>3. What are the political leanings of Bret Stephens?</strong>
           <p>Bret Stephens is generally identified as a conservative, particularly known for his neoconservative foreign policy views 
@@ -38,7 +41,8 @@ const RightPanel = () => {
         `
     },
     {
-        question: "What are the political leanings of the journalist Maryanne Demasi?",
+        questionNumber: "4.",
+        questionText: "What are the political leanings of the journalist Maryanne Demasi?",
         content: `
           <strong>4. What are the political leanings of the journalist Maryanne Demasi?</strong>
           <p>Maryanne Demasi is an Australian investigative journalist known for her controversial views on various health topics. She has challenged the scientific consensus on issues such as cholesterol, saturated fat, and statins 
@@ -48,7 +52,8 @@ const RightPanel = () => {
         `
     },
     {
-        question: "What do other sources say about the study published by Cochrane in 2023 indicating that mask mandates are not effective for reducing the spread of respiratory illnesses?",
+        questionNumber: "5.",
+        questionText: "What do other sources say about the study published by Cochrane in 2023 indicating that mask mandates are not effective for reducing the spread of respiratory illnesses?",
         content: `
           <strong>5. What do other sources say about the study published by Cochrane in 2023 indicating that mask mandates are not effective for reducing the spread of respiratory illnesses?</strong>
           <p>FactCheck.org: The review also highlighted the limitations of the studies, such as a high risk of bias, variation in outcome measurement, and low adherence to mask-wearing interventions 
@@ -59,15 +64,56 @@ const RightPanel = () => {
     }
   ];
 
+  const [expanded, setExpanded] = useState(notes.map(() => true));
+  const [allExpanded, setAllExpanded] = useState(true);
+
+  const toggleExpand = (index) => {
+    setExpanded((prevExpanded) =>
+      prevExpanded.map((isExpanded, i) => (i === index ? !isExpanded : isExpanded))
+    );
+  };
+
+  const toggleAll = () => {
+    const newExpandState = !allExpanded;
+    setExpanded(notes.map(() => newExpandState));
+    setAllExpanded(newExpandState);
+  };
+
   return (
     <div className="right-panel">
+      {/* Container for the Expand All button */}
+      <div className="expand-all-container">
+        <button 
+          className="toggle-all-button"
+          onClick={toggleAll}
+        >
+          {allExpanded ? 'Collapse All' : 'Expand All'}
+        </button>
+      </div>
+  
+      {/* Mapping over notes */}
       {notes.map((note, index) => (
         <div key={index} className="note-box">
-          {typeof note === 'string' ? note : <div dangerouslySetInnerHTML={{ __html: note.content }} />}
+          <div className="note-content">
+            {expanded[index] ? (
+              <div dangerouslySetInnerHTML={{ __html: note.content }} />
+            ) : (
+              <div className="collapsed-question">
+                <strong>{note.questionNumber}</strong> {note.questionText}
+              </div>
+            )}
+          </div>
+          <button 
+            className="expand-button" 
+            onClick={() => toggleExpand(index)}
+          >
+            {expanded[index] ? 'Collapse ▲' : 'Expand ▼'}
+          </button>
         </div>
       ))}
     </div>
   );
+  
 };
 
 export default RightPanel;
