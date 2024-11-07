@@ -1,0 +1,22 @@
+.article-container {
+    width: 60%; /* Adjust width as needed */
+    margin: 20px 0; /* Optional: space around the article */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .article-title {
+    font-size: 2em;
+    margin-bottom: 16px;
+    color: #333;
+  }
+  
+  .article-content p {
+    margin-bottom: 12px;
+  }
+  

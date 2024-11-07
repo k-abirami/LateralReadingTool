@@ -1,0 +1,77 @@
+.app-container {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Ensure the article only takes up the left side */
+.article-container {
+  width: 60%; /* Set width for the article */
+}
+
+/* Ensure the right panel occupies only a portion of the right side */
+.right-panel {
+  width: 35%; /* Adjust width as needed */
+}
+
+
+
+/*.app-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+Adjusts width of each section 
+.app-container > * {
+  flex: 1;
+}
+
+// For limiting the width of article
+.article-container {
+  max-width: 60%;
+}
+*/
+
+
+
+/*.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}*/
