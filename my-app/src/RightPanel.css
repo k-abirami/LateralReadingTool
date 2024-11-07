@@ -6,7 +6,7 @@
   
   .note-box {
     width: 100%;
-    min-height: 200px; /* Increase the height */
+    min-height: 100px; /* Increase the height */
     padding: 8px;
     background-color: #fffacd; /* Light yellow color */
     border: 1px solid #ccc;
